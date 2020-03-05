@@ -19,20 +19,29 @@ let foregroundField = document.getElementById("foreground-color");
 let nameField = document.getElementById("name");
 let body = document.querySelector("body");
 
-const sayHi = () => {
+const sayHi = event => {
+    event.preventDefault();
     let name = nameField.value
     greeting.textContent = "Good Morning " + name
+    sessionStorage.setItem("name", nameField.value);
 }
 
 const changeBackgroundColor = event => {
+    event.preventDefault();
     let backColor = backgroundField.value
+    body.style.backgroundColor = backColor 
+    sessionStorage.setItem("background", backgroundField.value);
     console.log(backColor);
-    body.style.color = backColor
 }
 
-const changeForegroundColor = Event => {
+const changeForegroundColor = event => {
+    event.preventDefault();
     let frontColor = foregroundField.value
-    console.log(frontColor);
     body.style.color = frontColor
-
+    sessionStorage.setItem("Foreground", foregroundField.value);
+    console.log(frontColor);
 }
+
+form.addEventListener("submit", changeBackgroundColor);
+form.addEventListener("submit", changeForegroundColor);
+form.addEventListener("submit", sayHi);
