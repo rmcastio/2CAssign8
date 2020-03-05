@@ -9,3 +9,30 @@
 // also want to call this function again when the user saves their preferences to
 // immediately apply them. Make sure you also notify the user somehow that the preferences
 // were saved.
+"use strict";
+
+
+let form = document.getElementById("preferences-form");
+let greeting = document.getElementById("greeting");
+let backgroundField = document.getElementById("background-color");
+let foregroundField = document.getElementById("foreground-color");
+let nameField = document.getElementById("name");
+let body = document.querySelector("body");
+
+const sayHi = () => {
+    let name = nameField.value
+    greeting.textContent = "Good Morning " + name
+}
+
+const changeBackgroundColor = event => {
+    let backColor = backgroundField.value
+    console.log(backColor);
+    body.style.color = backColor
+}
+
+const changeForegroundColor = Event => {
+    let frontColor = foregroundField.value
+    console.log(frontColor);
+    body.style.color = frontColor
+
+}
