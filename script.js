@@ -9,6 +9,8 @@
 // also want to call this function again when the user saves their preferences to
 // immediately apply them. Make sure you also notify the user somehow that the preferences
 // were saved.
+
+
 "use strict";
 
 
@@ -22,15 +24,15 @@ let body = document.querySelector("body");
 const sayHi = event => {
     event.preventDefault();
     let name = nameField.value
-    greeting.textContent = "Good Morning " + name
-    sessionStorage.setItem("name", nameField.value);
+    greeting.textContent = "Hello, my best friend " + name
+    localStorage.setItem("name", nameField.value);
 }
 
 const changeBackgroundColor = event => {
     event.preventDefault();
     let backColor = backgroundField.value
     body.style.backgroundColor = backColor 
-    sessionStorage.setItem("background", backgroundField.value);
+    localStorage.setItem("background", backgroundField.value);
     console.log(backColor);
 }
 
@@ -38,10 +40,31 @@ const changeForegroundColor = event => {
     event.preventDefault();
     let frontColor = foregroundField.value
     body.style.color = frontColor
-    sessionStorage.setItem("Foreground", foregroundField.value);
+    localStorage.setItem("foreground", foregroundField.value);
     console.log(frontColor);
 }
 
 form.addEventListener("submit", changeBackgroundColor);
 form.addEventListener("submit", changeForegroundColor);
 form.addEventListener("submit", sayHi);
+
+
+
+
+let myName = localStorage.getItem("name");
+if(myName != null)
+{
+    greeting.textContent = "Hello, my best friend " + myName
+}
+
+let myColorBG = localStorage.getItem("background");
+if(myColorBG != null)
+{
+    body.style.backgroundColor = backColor
+}
+
+let myColorFG = localStorage.getItem("foreground");
+if(myColorFG != null)
+{
+    body.style.color = frontColor
+}
